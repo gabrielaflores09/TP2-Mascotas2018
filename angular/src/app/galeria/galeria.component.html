@@ -1,0 +1,28 @@
+<h1>Fotos de tus mascotas</h1>
+<div class="opciones">
+    <input class="btn btn-success" [routerLink]="['/nuevaFotoMascota']" value="Nueva Foto" />
+</div>
+<br>
+<div>
+    <!-- ngFor en el click del renglon se ejecuta un metodo, se le pasa la mascota actual -->
+    <div class="container">
+        <div *ngFor="let fotomascota of fotosMascotas">
+
+            <li class="col-sm-4 fondo text-center">
+
+                <img class="caracteristicasfoto" src="{{fotomascota.imagen}}">
+
+                <div class="clearfix"></div>
+
+                <input type="textbox" class="caracteristicasfoto1" value="Mascota: {{fotomascota.name}}">
+
+                <textarea name="descripcion" style="width: 100%; height: 140px;" resize="none" readonly="readonly">{{fotomascota.description}}</textarea>
+                <button class="btn btn-warning" [routerLink]="['/nuevaFotoMascota/'+ fotomascota._id]">Modificar</button>
+
+                <div class="clearfix"></div>
+
+            </li>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<h1>{{fotomascota._id ? "Editar Foto Mascota" : 'Nueva Foto' }}</h1>
+<form #f="ngForm" novalidate>
+
+    <!-- Nombre de la Mascota -->
+    <div class="form-group">
+        <label>Mascota:</label>
+        <select name="name" [(ngModel)]="fotomascota.name">
+			<option *ngFor="let mascota of mascotas" [value]="mascota.name" >{{mascota.name}}</option>
+		</select>
+    </div>
+
+    <!-- Imagen de la mascota -->
+    <div class="form-group">
+        <label>Imagen:</label>
+        <file-upload name="imagen" allowedTypes="image/*" uploadButtonText="Upload File" [ngModel]="imagenMascota.image" (ngModelChange)="actualizarImagen($event)"></file-upload>
+    </div>
+
+    <!-- Descripción de la mascota -->
+    <div class="form-group">
+        <label>Descripcion:</label>
+        <textarea type="text" class="form-control" name="description" [class.errorBorder]="errors[ 'description'] " [(ngModel)]="fotomascota.description" required [minlength]="3 "></textarea>
+        <div *ngIf="f.controls.description?.errors?.minlength && f.controls.description?.touched" class="error">
+            Minimo 3 caracters, maximo 60
+        </div>
+        <div *ngIf="errors.description" class="error">
+            {{errors.description}}
+        </div>
+    </div>
+
+    <!-- Botones para cambios -->
+    <button class="btn btn-default" [routerLink]="['/galeria'] ">Cancelar</button>
+    <input type="button" class="btn btn-default" *ngIf="fotomascota._id" (click)="onDelete()" value="Eliminar" />
+    <button class="btn btn-success" (click)="submitForm()" [disabled]="f.invalid">Guardar</button>
+</form>
