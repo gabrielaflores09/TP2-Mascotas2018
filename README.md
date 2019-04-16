@@ -5,7 +5,7 @@ Proyecto Red social de Mascotas, ejemplo de código para la cátedra "Programaci
 
 Este proyecto es un ejemplo de como armar un proyecto Node 6 con Typescript como backend, y Angular 6 como frontend.
 
-El trabajo consiste en agregar un nuevo módulo el proyecto ya existente brindado por el profesor de la cátedra.
+El trabajo consiste en agregar un nuevo módulo al proyecto ya existente brindado por el profesor de la cátedra.
 
 El proyecto tiene 2 carpetas
 
